@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<!-- Created By CodingNepal -->
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <title>Register Form</title>
+      <link rel="stylesheet" href="style.css">
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+   </head>
+   <body>
+      <div class="center">
+         <div class="header">
+            Register Form
+         </div>
+         <%if(errors){%>
+            <% errors= errors.split(",")%> 
+            <% errors.forEach(el => { %>
+               <pre style="color: whitesmoke;"><%= el %> </pre>
+            <% }) %>
+         <%}%>
+         <form action="/register" method="post">
+            <input type="text" placeholder="First Name" name="firstName" style="margin-bottom: 10px;">
+            <input type="text" placeholder="Last Name" name="lastName" style="margin-bottom: 10px;">
+            <input type="text" placeholder="Phone Number" name="phoneNumber" style="margin-bottom: 10px;">
+            <input type="text" placeholder="Address" name="address" style="margin-bottom: 10px;">
+            <input type="text" placeholder="email" name="email">
+            <i class="far fa-envelope"></i>
+            <input id="pswrd" type="password" placeholder="Password" name="password">
+            <i class="fas fa-lock" onclick="show()"></i>
+            <select name="role" style="margin-top: 10px;">
+               <option disabled selected>Role</option>
+               <option value="admin">admin</option>
+               <option value="customer">customer</option>
+           </select>
+           <br>
+            <input type="submit" value="Sign Up">
+            <a href="/login">already be a member?</a>
+            
+         </form>
+      </div>
+      <script>
+         function show(){
+          var pswrd = document.getElementById('pswrd');
+          var icon = document.querySelector('.fas');
+          if (pswrd.type === "password") {
+           pswrd.type = "text";
+           pswrd.style.marginTop = "20px";
+           icon.style.color = "#7f2092";
+          }else{
+           pswrd.type = "password";
+           icon.style.color = "grey";
+          }
+         }
+      </script>
+   </body>
+</html>

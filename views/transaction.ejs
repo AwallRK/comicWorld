@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="profile.css" />
+    <title>Transaction</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+
+                    <div class="card-body">
+                        <div class="card-title mb-4">
+                            <div class="d-flex justify-content-start">
+
+                                <div class="ml-auto">
+                                    <input type="button" class="btn btn-primary d-none" id="btnDiscard"
+                                        value="Discard Changes" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-12">
+                                <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" id="basicInfo-tab" data-toggle="tab"
+                                            href="#basicInfo" role="tab" aria-controls="basicInfo"
+                                            aria-selected="true">Rincian Pembelian</a>
+                                    </li>
+
+                                </ul>
+                                <div class="tab-content ml-1" id="myTabContent">
+                                    <div class="tab-pane fade show active" id="basicInfo" role="tabpanel"
+                                        aria-labelledby="basicInfo-tab">
+                                    <h3>Hi <%= user.firstName %> Pilihan Komik mu : </h3>
+                                    <form action="/transaction/<%=findcomic.id%> " method="post">
+                                        <div class="row">
+                                            <div class="col-sm-3 col-md-2 col-5">
+                                                <label style="font-weight:bold;"> Comic </label>
+                                            </div>
+                                            <div class="col-md-8 col-6">
+                                                <img src=<%=findcomic.imgurl%> width="120" height="200" alt="...">
+                                            </div>
+                                        </div>
+                                        <hr />
+
+                                        <div class="row">
+                                            <div class="col-sm-3 col-md-2 col-5">
+                                                <label style="font-weight:bold;">title</label>
+                                            </div>
+                                            <div class="col-md-8 col-6">
+                                                <%= findcomic.title %>
+                                            </div>
+                                        </div>
+                                        <hr />
+
+                                        <div class="row">
+                                            <div class="col-sm-3 col-md-2 col-5">
+                                                <label style="font-weight:bold;">ISBN</label>
+                                            </div>
+                                            <div class="col-md-8 col-6">
+                                                <%= findcomic.isbn %>
+                                            </div>
+                                        </div>
+                                        <hr />
+                                        
+                                        <div class="row">
+                                            <div class="col-sm-3 col-md-2 col-5">
+                                                <label style="font-weight:bold;">Quantity</label>
+                                            </div>
+                                            <div class="col-md-8 col-6">
+                                                <input type="number" name="quantity" placeholder="10">
+                                            </div>
+                                        </div>
+                                        <hr />
+
+
+                                        <div class="row">
+                                            <div class="col-sm-3 col-md-2 col-5">
+                                                <label style="font-weight:bold;">Price</label>
+                                            </div>
+                                            <div class="col-md-8 col-6">
+                                                <input type="number" name="price" value="<%= findcomic.price %>" readonly>
+                                            </div>
+                                        </div>
+                                        <hr />
+
+                                        <button type="submit">Beli?</button>
+                                        <a href="/comiclist"><button>Return</button></a>
+                                    </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
